@@ -81,7 +81,11 @@ document.getElementById('play').addEventListener('click', function(){
 btnCheckEl.addEventListener('click', function(){
     // - Controllo i numeri inseriti con quelli generati
     for(let i=0; i<inputsEl.length; i++){
-        if(numbers.includes(Number(inputsEl[i].value))){
+        // if(numbers.includes(Number(inputsEl[i].value))){
+        //     points++;
+        //     guessedNumbers.push(Number(inputsEl[i].value));
+        // }
+        if(Number(inputsEl[i].value)==numbers[i]){
             points++;
             guessedNumbers.push(Number(inputsEl[i].value));
         }
