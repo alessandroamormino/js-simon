@@ -9,7 +9,8 @@
 // PSEUDOCODE:
 /*
 
-- genero 5 numeri casuali e li stampo in pagina
+- mi creo un array di 5 numeri casuali e li memorizzo
+- stampo i numeri generati in pagina
 - DOPO 10 SECONDI
     - cancello i numeri dalla pagina
     - creo 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
@@ -21,13 +22,14 @@
 
 */
 
+// - mi creo un array di 5 numeri casuali e li memorizzo
+const numbers = [];
 
+generateNumbers(numbers);
 
+// - stampo i numeri generati in pagina
 
-
-
-
-
+generateCards(document.getElementById('container'), 5);
 
 
 
@@ -74,6 +76,7 @@
 //******************************************
 //                FUNCTIONS
 //******************************************
+
 // NUMERO CASUALE DA min A max
 /**
  * Genera un numero random da 1 a 5
@@ -81,4 +84,41 @@
  */
 function randomNumber(min, max){
     return Math.floor(Math.random()* (max - min + 1) + min);
+}
+
+
+//GENERO 5 NUM
+/**
+ * Genera un array di 5 numeri casuali univoci
+ * @param {array} array
+ * @returns {array}
+ */
+function generateNumbers(array){
+    
+    while(array.length<5){
+
+        let random = randomNumber(1, 100);
+
+        if(!array.includes(random)){
+            array.push(random);
+        }
+    }
+    console.log(array);
+    return array;
+}
+
+
+function generateCards(parent, num){
+
+    for(let i=0; i<num; i++){
+        // creo un elemento div
+        let newEl = document.createElement('div');
+    
+        // gli assegno la classe card
+        newEl.classList.add('card');
+
+        // lo appendo al contenitore
+        parent.append(newEl);
+    }
+
 }
