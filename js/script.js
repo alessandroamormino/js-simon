@@ -10,6 +10,7 @@
 /*
 
 - mi creo un array di 5 numeri casuali e li memorizzo
+- genero 5 elementi da stampare in pagina
 - stampo i numeri generati in pagina
 - DOPO 10 SECONDI
     - cancello i numeri dalla pagina
@@ -27,9 +28,15 @@ const numbers = [];
 
 generateNumbers(numbers);
 
+// - genero 5 elementi da stampare in pagina
+generateCards(document.getElementById('container'), 5);
+
 // - stampo i numeri generati in pagina
 
-generateCards(document.getElementById('container'), 5);
+const cards = document.querySelectorAll('.card');
+for(let i=0; i<cards.length; i++){
+    cards[i].innerText = numbers[i];
+}
 
 
 
@@ -116,9 +123,10 @@ function generateCards(parent, num){
     
         // gli assegno la classe card
         newEl.classList.add('card');
-
+        
         // lo appendo al contenitore
         parent.append(newEl);
+
     }
 
 }
