@@ -9,9 +9,9 @@
 // PSEUDOCODE:
 /*
 
-- mi creo un array di 5 numeri casuali e li memorizzo
-- genero 5 elementi da stampare in pagina
-- stampo i numeri generati in pagina
+x mi creo un array di 5 numeri casuali e li memorizzo
+x genero 5 elementi da stampare in pagina
+x stampo i numeri generati in pagina
 - DOPO 10 SECONDI
     - cancello i numeri dalla pagina
     - creo 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
@@ -38,6 +38,14 @@ for(let i=0; i<cards.length; i++){
     cards[i].innerText = numbers[i];
 }
 
+
+// - DOPO 10 SECONDI
+setTimeout(function(){
+    // per ogni elemento restituito gli cancello il valore
+    for(let i=0; i<cards.length; i++){
+        cards[i].innerText = '';
+    }
+}, 10000);
 
 
 
