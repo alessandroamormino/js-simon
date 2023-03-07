@@ -12,10 +12,11 @@
 x mi creo un array di 5 numeri casuali e li memorizzo
 x genero 5 elementi da stampare in pagina
 x stampo i numeri generati in pagina
-- DOPO 10 SECONDI
-    - cancello i numeri dalla pagina
-    - creo 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
-- Controllo i numeri inseriti con quelli generati
+x DOPO 10 SECONDI
+    x cancello i numeri dalla pagina
+    x mostro i 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
+- AL CLICK DEL BOTTONE
+    - Controllo i numeri inseriti con quelli generati
     ? SE ho inserito un numero che era nella lista iniziale 
         °V1 : aumento un contatore
     
@@ -25,6 +26,18 @@ x stampo i numeri generati in pagina
 
 // - mi creo un array di 5 numeri casuali e li memorizzo
 const numbers = [];
+// bersaglio gli input
+const inputsEl = document.querySelectorAll('#controls input');
+// bersaglio il bottone
+const btnCheckEl = document.getElementById('check');
+// creo una variabile punteggio
+let points = 0;
+// creo un array dei numeri indovinati
+const guessedNumbers = [];
+// creo una stringa vuota che popolerò con i numeri indovinati
+let guessedString;
+// bersaglio il div message in cui stamperò il risultato
+const messageEl = document.getElementById('message');
 
 generateNumbers(numbers);
 
@@ -38,14 +51,50 @@ for(let i=0; i<cards.length; i++){
     cards[i].innerText = numbers[i];
 }
 
-
 // - DOPO 10 SECONDI
 setTimeout(function(){
     // per ogni elemento restituito gli cancello il valore
     for(let i=0; i<cards.length; i++){
         cards[i].innerText = '';
     }
-}, 10000);
+
+    // - mostro i 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
+    document.getElementById('controls').style.display='block';
+
+    // mostro il bottone di check nel DOM
+    btnCheckEl.style.display='block';
+
+
+}, 2000);
+
+
+
+// - AL CLICK DEL BOTTONE
+btnCheckEl.addEventListener('click', function(){
+    // - Controllo i numeri inseriti con quelli generati
+    for(let i=0; i<inputsEl.length; i++){
+        if(numbers.includes(Number(inputsEl[i].value))){
+            points++;
+            guessedNumbers.push(Number(inputsEl[i].value));
+        }
+    }
+
+    // leggo i numeri indovinati e li traduco in una stringa leggibile
+    guessedString = guessedNumbers.join(' - ');
+
+    // Stampo nel DOM il risultato
+    if(points>0){
+        if(points==numbers.length){
+            messageEl.innerText = `Hai indovinato tutti i numeri: ${guessedString}, facendo un punteggio di ${points}, il massimo!`;
+        }else if(points>1){
+            messageEl.innerText = `Hai indovinato i numeri: ${guessedString}, facendo un punteggio di ${points}`;
+        } else {
+            messageEl.innerText = `Hai indovinato solo il numero: ${guessedString}, facendo un punteggio di ${points}`;
+        }
+    }else{
+        messageEl.innerText = `Non hai indovinato neanche un numero, sei scarso..`;
+    }
+});
 
 
 
