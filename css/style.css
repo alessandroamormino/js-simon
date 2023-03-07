@@ -5,10 +5,96 @@
 }
 /* Reset */
 
+.btn{
+    padding: .5em 1.5em;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: #51F5F2;
+
+    transition: all .1s ease-in-out;
+}
+
+body{
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #212121;
+    color: white;
+    font-size: 1.3em;
+}
+
+header{
+    text-align: center;
+    margin: 2em;
+}
+
+header p{
+    margin: 1em 0;
+}
+
+.play-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    /* flex */
+
+    margin: 3em 0;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex */
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
 #controls{
-    display: none;
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    margin: 3em 0;
 }
 
 #check {
     display: none;
+}
+
+.check-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+input.card{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3em;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+}
+
+#message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2em;
 }

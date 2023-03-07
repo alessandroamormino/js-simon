@@ -5,21 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Says</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div id="container"></div>
-
-    <div id="controls">
-        <input type="number">
-        <input type="number">
-        <input type="number">
-        <input type="number">
-        <input type="number">
+    <header>
+        <h1>Simon Says</h1>
+        <p>Hai 10 secondi per memorizzare i numeri che appariranno qua sotto, successivamente dovrai riscriverli e controllare quanti ne hai indovinati</p>
+    </header>
+    <div class="play-container">
+        <button id="play" class="btn">Gioca</button>
     </div>
 
-    <button id="check">Controlla</button>
+    <!-- <div id="container"></div> -->
+
+    <div id="controls">
+        <input type="text" class="card">
+        <input type="text" class="card">
+        <input type="text" class="card">
+        <input type="text" class="card">
+        <input type="text" class="card">
+    </div>
+
+    <div class="check-container">
+        <button id="check" class="btn">Controlla</button>
+    </div>
 
     <div id="message"></div>
     

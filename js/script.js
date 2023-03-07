@@ -39,33 +39,41 @@ let guessedString;
 // bersaglio il div message in cui stamperò il risultato
 const messageEl = document.getElementById('message');
 
-generateNumbers(numbers);
 
-// - genero 5 elementi da stampare in pagina
-generateCards(document.getElementById('container'), 5);
+// al click del bottone gioca:
 
-// - stampo i numeri generati in pagina
+document.getElementById('play').addEventListener('click', function(){
 
-const cards = document.querySelectorAll('.card');
-for(let i=0; i<cards.length; i++){
-    cards[i].innerText = numbers[i];
-}
+    // - genero 5 elementi da stampare in pagina
+    // generateCards(document.getElementById('container'), 5);
+    generateNumbers(numbers);
 
-// - DOPO 10 SECONDI
-setTimeout(function(){
-    // per ogni elemento restituito gli cancello il valore
+    // - stampo i numeri generati in pagina
+    const cards = document.querySelectorAll('.card');
     for(let i=0; i<cards.length; i++){
-        cards[i].innerText = '';
+        // cards[i].innerText = numbers[i];
+        cards[i].value = numbers[i];
     }
 
-    // - mostro i 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
-    document.getElementById('controls').style.display='block';
+    // - DOPO 10 SECONDI
+    setTimeout(function(){
+        // per ogni elemento restituito gli cancello il valore
+        for(let i=0; i<cards.length; i++){
+            // cards[i].innerText = '';
+            cards[i].value = '';
+        }
 
-    // mostro il bottone di check nel DOM
-    btnCheckEl.style.display='block';
+        // - mostro i 5 input nel DOM in cui l'utente dovrà inserire i numeri che sono scomparsi
+        // document.getElementById('controls').style.display='block';
+
+        // mostro il bottone di check nel DOM
+        btnCheckEl.style.display='block';
 
 
-}, 2000);
+    }, 10000);
+});
+
+
 
 
 
@@ -95,35 +103,6 @@ btnCheckEl.addEventListener('click', function(){
         messageEl.innerText = `Non hai indovinato neanche un numero, sei scarso..`;
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -167,7 +146,6 @@ function generateNumbers(array){
             array.push(random);
         }
     }
-    console.log(array);
     return array;
 }
 
